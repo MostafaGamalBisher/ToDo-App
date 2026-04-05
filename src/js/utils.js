@@ -1,3 +1,5 @@
+import { EmptyList } from './elements';
+
 const creatHTML = (task) => `
     <li class="TaskList__taskContent" data-id="${task.id}">
       <div class='TaskList__checkbox' tabindex="0" role="button">
@@ -45,4 +47,22 @@ export const renderTasks = (valuePlace) => {
   tasks.forEach((task) => {
     valuePlace.innerHTML += creatHTML(task);
   });
+};
+
+export const toggleTheme = (element) => {
+  element.classList.toggle('App--isDark');
+};
+
+export const renderTheme = (element) => {
+  const theme = localStorage.getItem('theme');
+
+  if (!theme.length) {
+    return;
+  }
+  toggleTheme(element);
+};
+
+export const renderEmptyState = (emptyElement) => {
+  const tasks = getFromDB('tasks');
+  emptyElement.classList.toggle('hidden', tasks.length > 0);
 };
