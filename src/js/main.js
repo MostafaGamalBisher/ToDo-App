@@ -1,6 +1,5 @@
 import '../scss/main.scss';
 import {
-  checkTask,
   EmptyList,
   filterButton,
   main,
