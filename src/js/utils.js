@@ -1,11 +1,14 @@
+import checkmarkIcon from '../assets/img/icons/icon-checkmark.svg';
+import basketIcon from '../assets/img/icons/icon-basket.svg';
+
 const creatHTML = (task) => `
     <li class="TaskList__taskContent ${task.completed ? 'TaskList__taskContent--isActive' : ''}" data-id="${task.id}">
       <div class='TaskList__checkbox' tabindex="0" role="button">
-        <img class='TaskList__checkboxImg' src="./src/assets/img/icons/icon-checkmark.svg" alt="checkmark" />
+        <img class='TaskList__checkboxImg' src="${checkmarkIcon}" alt="checkmark" />
       </div>
       <div class='TaskList__valueContent'>
         <p class='TaskList__value'>${task.value}</p>
-        <img src="./src/assets/img/icons/icon-basket.svg" class='TaskList__deleteIcon' alt="basket-icon" />
+        <img src="${basketIcon}" class='TaskList__deleteIcon' alt="basket-icon" />
       </div>
     </li>`;
 
