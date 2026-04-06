@@ -327,3 +327,13 @@ code {
 .hidden {
   display: none;
 }
+.TaskList__list--hideCompleted .TaskList__taskContent--isActive {
+  display: none;
+}
+
+.isActive .show {
+  display: inline;
+}
+.isActive .hide {
+  display: none;
+}

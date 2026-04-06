@@ -6,3 +6,5 @@ export const searchBarButton = document.querySelector('.TaskSearchBar__button');
 export const taskList = document.querySelector('.TaskList__list');
 export const deletebutton = document.querySelector('.TaskList__deleteIcon');
 export const EmptyList = document.querySelector('.EmptyList');
+export const checkTask = document.querySelector('.TaskList__taskContent');
+export const filterButton = document.querySelector('.TaskList__link');

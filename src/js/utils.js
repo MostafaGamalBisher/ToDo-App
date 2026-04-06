@@ -1,7 +1,5 @@
-import { EmptyList } from './elements';
-
 const creatHTML = (task) => `
-    <li class="TaskList__taskContent" data-id="${task.id}">
+    <li class="TaskList__taskContent ${task.completed ? 'TaskList__taskContent--isActive' : ''}" data-id="${task.id}">
       <div class='TaskList__checkbox' tabindex="0" role="button">
         <img class='TaskList__checkboxImg' src="./src/assets/img/icons/icon-checkmark.svg" alt="checkmark" />
       </div>
@@ -27,6 +25,7 @@ export const addTask = (value, valuePlace) => {
   const task = {
     id: Date.now(),
     value: value,
+    completed: false,
   };
 
   const tasks = getFromDB('tasks');
@@ -56,7 +55,7 @@ export const toggleTheme = (element) => {
 export const renderTheme = (element) => {
   const theme = localStorage.getItem('theme');
 
-  if (!theme.length) {
+  if (!theme) {
     return;
   }
   toggleTheme(element);
@@ -65,4 +64,17 @@ export const renderTheme = (element) => {
 export const renderEmptyState = (emptyElement) => {
   const tasks = getFromDB('tasks');
   emptyElement.classList.toggle('hidden', tasks.length > 0);
+};
+
+export const toggleComplete = (id) => {
+  const tasks = getFromDB('tasks');
+
+  const updtaedTasks = tasks.map((task) => {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
+    }
+    return task;
+  });
+
+  saveToDB('tasks', updtaedTasks);
 };

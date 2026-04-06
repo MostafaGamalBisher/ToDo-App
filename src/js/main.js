@@ -1,6 +1,8 @@
 import '../scss/main.scss';
 import {
+  checkTask,
   EmptyList,
+  filterButton,
   main,
   searchBarButton,
   searchBarInput,
@@ -14,6 +16,7 @@ import {
   renderTasks,
   renderTheme,
   saveToDB,
+  toggleComplete,
   toggleTheme,
 } from './utils';
 
@@ -60,4 +63,20 @@ taskList.addEventListener('click', (e) => {
   } else {
     return;
   }
+});
+
+taskList.addEventListener('click', (e) => {
+  if (e.target.classList.contains('TaskList__checkboxImg')) {
+    const parent = e.target.closest('.TaskList__taskContent');
+    const parentID = Number(parent.dataset.id);
+
+    parent.classList.toggle('TaskList__taskContent--isActive');
+
+    toggleComplete(parentID);
+  }
+});
+
+filterButton.addEventListener('click', () => {
+  taskList.classList.toggle('TaskList__list--hideCompleted');
+  filterButton.classList.toggle('isActive');
 });
